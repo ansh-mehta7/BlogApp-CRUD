@@ -11,11 +11,12 @@
            const savedComment=await comment.save();
            // this comment we will add in post comment array 
 
-           const updatedPost=await Post.findByIdAndUpdate(post,{$push : {comments:savedComment._id}},{new:true})
+           const updatedPost=await Post.findByIdAndUpdate(post,
+               {$push : {comments:savedComment._id}},{new:true})
                          .populate("comments")
-                         .exec();
+                         .exec(); 
                res.status(200).json({
-                    post:updatedPost,
+                    post:updatedPost
                }); 
 
       }
